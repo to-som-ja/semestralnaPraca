@@ -1,0 +1,93 @@
+/*
+ * Globals
+ */
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+    color: rgba(0, 0, 0, 1);
+    text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+/*
+ * Base structure
+ */
+
+body {
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+    background-image: url(files/tank_icon.png);
+}
+header{
+    margin-bottom: auto;
+}
+
+header.cover-container {
+    max-width: 80rem;
+}
+footer.cover-container {
+    max-width: 80rem;
+}
+main{
+    max-width: 100rem;
+}
+h1 {
+    font-size: 4rem;
+    padding-right: 2rem;
+}
+.nav-masthead .nav-link {
+    font-size: 2rem;
+    padding: 0.25rem 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    border-bottom: 0.25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+    margin-left: 1rem;
+}
+
+.nav-masthead .active {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+footer i.fa {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+footer i.fa:hover {
+    color: #fff;
+}
+.footer a {
+    margin: 2rem;
+}
+.btn{
+    color: rgba(255, 255, 255, 0.7);
+
+    background-color: rgba(255, 255, 255, 0.2);
+    border: rgba(255, 255, 255, 0.5) 5px solid;
+    box-shadow: 5px 3px 3px rgba(255, 255, 255, 0.5);
+    font-size: 100%;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+}
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: rgba(255, 255, 255, 0.8) 5px solid;
+    box-shadow: 5px 3px 3px rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+}
+.form-check-input{
+    background-color: white;
+}

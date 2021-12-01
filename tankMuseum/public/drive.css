@@ -1,0 +1,39 @@
+.nadpis{
+    size: 10em;
+}
+.text{
+
+ }
+
+header{
+    margin-bottom: 3%;
+}
+.experience{
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position-y: 50%;
+    height: 18em;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)), url("files/tank-experience.jpg");
+ }
+.experience p{
+    padding: 3%;
+    font-size: 200% ;
+    font-weight: 700;
+}
+.experience button{
+    padding: 3%;
+    font-size: 200% ;
+    font-weight: 700;
+    background: transparent;
+    color: white;
+    border-width: 5px;
+}
+.experience button:hover{
+    background: rgba(255, 255, 255, 0.15);
+    content: "Register now >";
+    border-color: white;
+}
+main{
+    padding-bottom: 30px;
+}

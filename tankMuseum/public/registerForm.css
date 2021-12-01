@@ -1,0 +1,22 @@
+.error {
+    color: red;
+    padding: 5px;
+    background-color: #ffaaaa;
+}
+.has-error {
+    color: red;
+}
+.has-error textarea,
+.has-error input {
+    border-color: red;
+}
+#submit-info {
+    display: none;
+    padding: 5px;
+    background-color: #ffaaaa;
+    color: red;
+}
+#submit:disabled{
+    background-color: red;
+    border-color: red;
+}
