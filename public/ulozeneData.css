@@ -1,0 +1,49 @@
+header{
+    margin-bottom: 3%;
+}
+
+.btn{
+    font-size: 150% ;
+    font-weight: 700;
+    background: transparent;
+    border-width: 5px;
+}
+.btn:hover{
+
+}
+
+.delete{
+    color: rgba(255, 0, 0, 0.60);
+    border-color: rgba(255, 0, 0, 0.60);
+    box-shadow: 5px 3px 3px rgba(255, 0, 0, 0.4);
+}
+.delete:hover{
+    color: rgba(255, 0, 0, 0.80);
+    border-color: rgba(255, 0, 0, 0.80);
+    box-shadow: 5px 3px 3px rgba(255, 0, 0, 0.6);
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.update{
+    color: rgba(0, 255, 0, 0.60);
+    border-color: rgba(0, 255, 0, 0.60);
+    box-shadow: 5px 3px 3px rgba(0, 255, 0, 0.4);
+}
+.update:hover{
+    color: rgba(0, 255, 0, 0.80);
+    border-color: rgba(0, 255, 0, 0.80);
+    box-shadow: 5px 3px 3px rgba(0, 255, 0, 0.6);
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.pozadie
+{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 50%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.65)), url("files/tank-crush.jpg");
+}
+.buttons{
+    padding-bottom: 30px;
+}

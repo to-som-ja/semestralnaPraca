@@ -1,40 +1,118 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="sk" class="h-100">
 <head>
-    <title>FRI-MVC FW</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="public/css.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="public/files/tank_icon.png"/>
+    <title>Tank Museum</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="public/css.css"/>
+    <?php switch ($this->viewName) {
+
+    case "Home\contact" : ?>
+    <link rel="stylesheet" href="public/contact.css"/>
+    <?php break; ?>
+    <?php case "Auth\registerForm" : ?>
+            <link rel="stylesheet" href="public/registerForm.css"/>
+        <script src="public/scriptSelect.js"></script>
+            <?php break; ?>
+
+    <?php case "Home\collectionUSSR" : ?>
+    <link rel="stylesheet" href="public/collection.css"/>
+    <?php break; ?>
+
+    <?php case "Drive\driveRegister" : ?>
+    <link rel="stylesheet" href="public/driveRegister.css"/>
+    <?php break; ?>
+
+    <?php case "Drive\updateForm" : ?>
+    <link rel="stylesheet" href="public/driveRegister.css"/>
+    <?php break; ?>
+
+    <?php case "Drive\ulozeneData" : ?>
+    <link rel="stylesheet" href="public/ulozeneData.css"/>
+    <?php break; ?>
+
+
+
+    <?php case "Home\drive" : ?>
+    <link rel="stylesheet" href="public/drive.css"/>
+        <?php break;
+    }    ?>
+
 </head>
-<body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+<body class="d-flex h-100 text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="cover-container mx-auto">
+        <div class="toto">
+            <h1 class="float-md-start mb-0">Tank Museum</h1>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a <?php if ($this->viewName == "Home\index") { ?>
+                    class="nav-link active"
+                <?php } else { ?> class="nav-link"  <?php } ?>
+                        href="?c=home&a=index">Home</a>
+
+                <a class="nav-link" href="news.html">News</a>
+
+                <a <?php if ($this->viewName == "Home\collectionUSSR") { ?>
+                    class="nav-link active"
+                <?php } else { ?> class="nav-link"  <?php } ?>
+                        href="?c=home&a=collectionUSSR">Collection</a>
+
+                <a <?php if ($this->viewName == "Home\drive") { ?>
+                    class="nav-link active"
+                <?php } else { ?> class="nav-link"  <?php } ?>
+                        href="?c=home&a=drive">Drive</a>
+
+                <a <?php if ($this->viewName == "Home\contact") { ?>
+                    class="nav-link active"
+                <?php } else { ?> class="nav-link"  <?php } ?>
+                        href="?c=home&a=contact">Contact</a>
+
+                <?php if (\App\Auth::isLogged()) { ?>
+                    <a class="nav-link" href="?c=auth&a=logout">Logout</a>
+                <?php } else { ?>
+                    <a <?php if ($this->viewName == "Auth\loginForm") { ?>
+                        class="nav-link active"
+                    <?php } else { ?> class="nav-link"  <?php } ?>
+                            href="<?= \App\Config\Configuration::LOGIN_URL ?>">Login</a>
+                <?php } ?>
+
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <a class="navbar-brand" href="#">FRI-MVC FW </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="?c=home">Domov</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?c=home&a=contact">Kontakt</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row mt-2">
-        <div class="col">
+        <div class="row mt-2">
+            <div class="col">
                 <?= $contentHTML ?>
+            </div>
         </div>
     </div>
+    <footer class="mt-auto text-white">
+        <p class="footer">
+            <a target="_blank" href="https://www.facebook.com"
+            ><i class="fa fa-facebook-square"></i
+                ></a>
+            <a target="_blank" href="https://www.instagram.com"
+            ><i class="fa fa-instagram"></i
+                ></a>
+            <a target="_blank" href="https://www.twitter.com"
+            ><i class="fa fa-twitter-square"></i
+                ></a>
+            <a target="_blank" href="https://www.youtube.com"
+            ><i class="fa fa-youtube-square"></i
+                ></a>
+        </p>
+    </footer>
 </div>
 </body>
 </html>
-

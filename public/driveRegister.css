@@ -1,0 +1,57 @@
+header{
+    margin-bottom: 3%;
+}
+
+.date input {
+    font-size: 150% ;
+    font-weight: 400;
+    width: 180px;
+}
+.polozka
+{
+    padding: 50px;
+}
+.btn{
+    font-size: 150% ;
+    font-weight: 700;
+    background: transparent;
+    color: white;
+    border-width: 5px;
+}
+.btn:hover{
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
+}
+.pozadie
+{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: 50%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.65)), url("files/tank-crush.jpg");
+}
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    width: 180px;
+}
+.form-check{
+    padding-top: 50px;
+}
+.form-check input{
+    width: 20px;
+    height: 20px;
+}
+.form-check label{
+    font-size: 130% ;
+    font-weight: 400;
+}
+.strelba input{
+    width: 20px;
+    height: 20px;
+}
+.strelba label{
+    font-size: 130% ;
+    font-weight: 400;
+}
+

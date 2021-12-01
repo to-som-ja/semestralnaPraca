@@ -1,0 +1,31 @@
+main .first {
+}
+
+main .second div {
+    margin-left: auto;
+    margin-right: auto;
+}
+iframe {
+    scroll-behavior: smooth;
+    height: 400px;
+    width: 400px;
+}
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 400px;
+    width: 400px;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 400px;
+    width: 400px;
+}
+main{
+    max-width: 70rem;
+}
+main i.fa{
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+}

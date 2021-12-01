@@ -79,6 +79,54 @@ abstract class Model implements \JsonSerializable
             throw new \Exception('Query failed: ' . $e->getMessage());
         }
     }
+    static public function getOneMail($mail)
+    {
+        if ($mail == "") return null;
+
+        self::connect();
+        try {
+            $sql = "SELECT * FROM " . self::getTableName() . " WHERE mail =?";
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute([$mail]);
+            $model = $stmt->fetch();
+            if ($model) {
+                $data = array_fill_keys(self::getDbColumns(), null);
+                $tmpModel = new static();
+                foreach ($data as $key => $item) {
+                    $tmpModel->$key = $model[$key];
+                }
+                return $tmpModel;
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            throw new \Exception('Query failed: ' . $e->getMessage());
+        }
+    }
+    static public function getOneUserID($userID)
+    {
+        if ($userID == "") return null;
+
+        self::connect();
+        try {
+            $sql = "SELECT * FROM " . self::getTableName() . " WHERE userID =?";
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute([$userID]);
+            $model = $stmt->fetch();
+            if ($model) {
+                $data = array_fill_keys(self::getDbColumns(), null);
+                $tmpModel = new static();
+                foreach ($data as $key => $item) {
+                    $tmpModel->$key = $model[$key];
+                }
+                return $tmpModel;
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            throw new \Exception('Query failed: ' . $e->getMessage());
+        }
+    }
 
     /**
      * Gets one model by primary key
