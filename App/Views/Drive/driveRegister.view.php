@@ -76,10 +76,6 @@
     </div>
 </form>
 
-
-<script>
-
-</script>
 <style>
     .error {
         color: red;

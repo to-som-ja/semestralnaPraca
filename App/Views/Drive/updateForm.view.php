@@ -6,8 +6,8 @@
             <label for="exampleFormControlInput1" class="form-label "> Pohlavie</label>
             <br>
             <div class="custom-select offset-sm-4">
-                <select name="pohlavie" class="form-control " id="exampleFormControlInput2" required>
-                    <option value="0">Vyber:</option>
+                <select name="pohlavie" class="form-control " id="pohlavie" required>
+                    <option >Vyber:</option>
                     <option value="muz" <?php if ($data["pohlavie"]=="muz") echo "selected";?>>Muž</option>
                     <option value="zena" <?php if ($data["pohlavie"]=="zena") echo "selected";?>>Žena</option>
                     <option value="ine" <?php if ($data["pohlavie"]=="ine") echo "selected";?>>Iné</option>
@@ -33,8 +33,8 @@
         <div class="polozka col col-sm-6">
             <label for="exampleFormControlInput1" class="form-label "> Tank</label>
             <div class="custom-select offset-sm-4">
-                <select name="tank" class="form-control " id="exampleFormControlInput3" required>
-                    <option value="0">Vyber:</option>
+                <select name="tank" class="form-control " id="tank" required>
+                    <option>Vyber:</option>
                     <option value="Chieftan MK7" <?php if ($data["tank"]=="Chieftan MK7") echo "selected";?>>Chieftan MK7</option>
                     <option value="t-64 AV" <?php if ($data["tank"]=="t-64 AV") echo "selected";?>>T-64 AV</option>
                     <option value="M60 AMBT" <?php if ($data["tank"]=="M60 AMBT") echo "selected";?>>M60 AMBT</option>
@@ -57,91 +57,87 @@
     </div>
     <div class="form-check d-flex justify-content-center mb-5">
     </div>
+    <div id="submit-info">
+        Formulár obsahuje chyby a nie je možné ho odoslať.
+    </div>
     <div class="">
         <button type="submit" class="btn btn-primary">Upraviť</button>
     </div>
 </form>
 
 
+<style>
+    .error {
+        color: red;
+        padding: 5px;
+        background-color: #ffaaaa;
+    }
+    .has-error {
+        color: red;
+    }
+    .has-error textarea,
+    .has-error input {
+        border-color: red;
+    }
+    #submit-info {
+        display: none;
+        padding: 5px;
+        background-color: #ffaaaa;
+        color: red;
+    }
+    #submit:disabled{
+        background-color: red;
+        border-color: red;
+    }
+</style>
 <script>
-    var x, i, j, l, ll, selElmnt, a, b, c;
-    /*look for any elements with the class "custom-select":*/
-    x = document.getElementsByClassName("custom-select");
-    l = x.length;
-    for (i = 0; i < l; i++) {
-        selElmnt = x[i].getElementsByTagName("select")[0];
-        ll = selElmnt.length;
-        /*for each element, create a new DIV that will act as the selected item:*/
-        a = document.createElement("DIV");
-        a.setAttribute("class", "select-selected");
-        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-        x[i].appendChild(a);
-        /*for each element, create a new DIV that will contain the option list:*/
-        b = document.createElement("DIV");
-        b.setAttribute("class", "select-items select-hide");
-        for (j = 1; j < ll; j++) {
-            /*for each option in the original select element,
-            create a new DIV that will act as an option item:*/
-            c = document.createElement("DIV");
-            c.innerHTML = selElmnt.options[j].innerHTML;
-            c.addEventListener("click", function (e) {
-                /*when an item is clicked, update the original select box,
-                and the selected item:*/
-                var y, i, k, s, h, sl, yl;
-                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-                sl = s.length;
-                h = this.parentNode.previousSibling;
-                for (i = 0; i < sl; i++) {
-                    if (s.options[i].innerHTML == this.innerHTML) {
-                        s.selectedIndex = i;
-                        h.innerHTML = this.innerHTML;
-                        y = this.parentNode.getElementsByClassName("same-as-selected");
-                        yl = y.length;
-                        for (k = 0; k < yl; k++) {
-                            y[k].removeAttribute("class");
-                        }
-                        this.setAttribute("class", "same-as-selected");
-                        break;
-                    }
+
+    function validateInput(element, validationFunction) {
+        element.oninput = function (event) {
+            let result = validationFunction(event.target.value);
+
+            let erId = "er-" + element.id;
+            let errorEle = document.getElementById(erId);
+
+            if (result != null) {
+                if (errorEle == null) {
+                    errorEle = document.createElement("div")
+                    errorEle.classList.add("error");
+                    errorEle.id = erId;
                 }
-                h.click();
-            });
-            b.appendChild(c);
+                errorEle.innerText = result;
+                element.after(errorEle);
+                element.parentElement.classList.add("has-error");
+            } else {
+                errorEle?.remove()
+                element.parentElement.classList.remove("has-error");
+            }
+            checkFormState();
         }
-        x[i].appendChild(b);
-        a.addEventListener("click", function (e) {
-            /*when the select box is clicked, close any other select boxes,
-            and open/close the current select box:*/
-            e.stopPropagation();
-            closeAllSelect(this);
-            this.nextSibling.classList.toggle("select-hide");
-            this.classList.toggle("select-arrow-active");
+        element.dispatchEvent(new Event('input'));
+    }
+
+    function checkFormState() {
+        if (document.querySelectorAll(".error").length == 0) {
+            document.getElementById("submit").disabled = false;
+            document.getElementById("submit-info").style.display = "none";
+        } else {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit-info").style.display = "block";
+        }
+    }
+    window.onload = () => {
+        validateInput(document.getElementById("tank"), function (value = null) {
+            if (value == "Vyber:") {
+                return "Zadaj tank";
+            }
+        });
+        validateInput(document.getElementById("pohlavie"), function (value = null) {
+            if (value == "Vyber:") {
+                return "Zadaj pohlavie";
+            }
         });
     }
 
-    function closeAllSelect(elmnt) {
-        /*a function that will close all select boxes in the document,
-        except the current select box:*/
-        var x, y, i, xl, yl, arrNo = [];
-        x = document.getElementsByClassName("select-items");
-        y = document.getElementsByClassName("select-selected");
-        xl = x.length;
-        yl = y.length;
-        for (i = 0; i < yl; i++) {
-            if (elmnt == y[i]) {
-                arrNo.push(i)
-            } else {
-                y[i].classList.remove("select-arrow-active");
-            }
-        }
-        for (i = 0; i < xl; i++) {
-            if (arrNo.indexOf(i)) {
-                x[i].classList.add("select-hide");
-            }
-        }
-    }
 
-    /*if the user clicks anywhere outside the select box,
-    then close all select boxes:*/
-    document.addEventListener("click", closeAllSelect);
 </script>
