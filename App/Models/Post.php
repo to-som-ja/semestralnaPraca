@@ -6,14 +6,50 @@ class Post extends \App\Core\Model
     public function __construct(
         public int $id = 0,
         public ?string $image = null,
-        public int $likes = 0
+        public int $likes = 0,
+        public ?string $text = null,
+        public ?string $country = null,
+
+
     )
     {
     }
 
     static public function setDbColumns()
     {
-        return ['id','image','likes'];
+        return ['id','image','likes','text','country'];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string|null $country
+     */
+    public function setCountry(?string $country): void
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @param string|null $text
+     */
+    public function setText(?string $text): void
+    {
+        $this->text = $text;
     }
 
     static public function setTableName()

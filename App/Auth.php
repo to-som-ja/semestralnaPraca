@@ -10,19 +10,24 @@ class Auth
     public static function login($login, $password)
     {
         $user = Users::getOneMail($login);
-        if ($user!=null && $password==$user->getPassword()){
+        if ($user!=null) {
+            $hashedPassword = $user->getPassword();
+            $checkPassword = password_verify($password, $hashedPassword);
+            if ($checkPassword) {
 
-            $_SESSION["name"] = $login;
-            return true;
-        }else{
-            return false;
+                $_SESSION["name"] = $login;
+                return true;
+            }
         }
+            return false;
+
     }
     public static function register($login, $password)
     {
         $newUser = new Users();
         $newUser->setMail($login);
-        $newUser->setPassword($password);
+        $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
+        $newUser->setPassword($hashedPassword);
         $newUser->save();
     }
     public static function isLogged()

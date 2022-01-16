@@ -3,8 +3,7 @@ main {
 }
 .tento {
     float: left;
-
-
+    padding: 0;
 }
 .nav li {
     list-style-type: none;
@@ -13,8 +12,8 @@ main {
 .nav li a {
     text-decoration: none;
     display: block;
-    width: 12em;
-    height: 60px;
+    width: 10em;
+    height: 50px;
     padding-top: 10px;
     border: rgba(255, 255, 255, 0.5) 5px solid;
     box-shadow: 5px 3px 3px rgba(255, 255, 255, 0.5);
@@ -36,17 +35,43 @@ main {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, 0.7);
 }
-.pictures figure{
-    padding: 0.7rem;
-
+.pictures{
+    margin: 0;
+    padding: 0;
 }
-.pictures img{
-
-    height: 250px;
+figure{
+    margin: 0;
+    padding: 0.5rem;
+}
+img{
+    height:  300px;
     width: auto;
 }
-figcaption{
+figcaption p{
+    height: 30px;
     font-weight: 700;
-    font-size: 1em;
+    font-size: 20px;
+    text-align: end;
 }
+
+.like{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    height: 35px;
+    font-size: 25px;
+}
+.like:hover{
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255,    255, 0);
+
+}
+.like:enabled{
+    color: rgba(255, 255, 255, 0.9);
+    background-color: red;
+}
+
 

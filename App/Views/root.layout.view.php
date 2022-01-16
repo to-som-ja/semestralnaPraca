@@ -10,7 +10,9 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -27,6 +29,12 @@
             <?php break; ?>
 
     <?php case "Home\collectionUSSR" : ?>
+    <link rel="stylesheet" href="public/collection.css"/>
+    <?php break; ?>
+    <?php case "Home\News" : ?>
+    <link rel="stylesheet" href="public/news.css"/>
+    <?php break; ?>
+    <?php case "Home\collectionGER" : ?>
     <link rel="stylesheet" href="public/collection.css"/>
     <?php break; ?>
 
@@ -61,9 +69,12 @@
                 <?php } else { ?> class="nav-link"  <?php } ?>
                         href="?c=home&a=index">Home</a>
 
-                <a class="nav-link" href="news.html">News</a>
+                <a <?php if ($this->viewName == "Home\News") { ?>
+                    class="nav-link active"
+                <?php } else { ?> class="nav-link"  <?php } ?>
+                        href="?c=home&a=News">News</a>
 
-                <a <?php if ($this->viewName == "Home\collectionUSSR") { ?>
+                <a <?php if ($this->viewName == "Home\collectionUSSR"|| $this->viewName == "Home\collectionGER") { ?>
                     class="nav-link active"
                 <?php } else { ?> class="nav-link"  <?php } ?>
                         href="?c=home&a=collectionUSSR">Collection</a>

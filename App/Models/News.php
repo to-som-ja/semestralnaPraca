@@ -1,23 +1,24 @@
 <?php
 namespace App\Models;
-class Comment extends \App\Core\Model
+class News extends \App\Core\Model
 {
     public function __construct(
         public int $id = 0,
+        public ?string $title = null,
         public ?string $text = null,
-        public int $post_id = 0
+        public ?string $image = null
     )
     {
     }
 
     static public function setDbColumns()
     {
-        return ['id','post_id','text'];
+        return ['id','title','text','image'];
     }
 
     static public function setTableName()
     {
-        return "comments";
+        return "news";
     }
 
     /**
@@ -39,6 +40,22 @@ class Comment extends \App\Core\Model
     /**
      * @return string|null
      */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     */
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getText(): ?string
     {
         return $this->text;
@@ -53,19 +70,19 @@ class Comment extends \App\Core\Model
     }
 
     /**
-     * @return int
+     * @return string|null
      */
-    public function getPostId(): int
+    public function getImage(): ?string
     {
-        return $this->post_id;
+        return $this->image;
     }
 
     /**
-     * @param int $post_id
+     * @param string|null $image
      */
-    public function setPostId(int $post_id): void
+    public function setImage(?string $image): void
     {
-        $this->post_id = $post_id;
+        $this->image = $image;
     }
 
 }

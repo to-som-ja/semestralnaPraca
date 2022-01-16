@@ -21,11 +21,24 @@ class HomeController extends AControllerRedirect
             ]
         );
     }
+
     public function collectionUSSR()
+    {
+        $posts = Post::getAll();
+        return $this->html(
+        );
+    }
+    public function collectionGER()
+    {
+        $posts = Post::getAll();
+        return $this->html(
+        );
+    }
+    public function drive()
     {
         return $this->html();
     }
-    public function drive()
+    public function News()
     {
         return $this->html();
     }
@@ -38,11 +51,12 @@ class HomeController extends AControllerRedirect
 
     public function addLike(){
         $postId = $this->request()->getValue('postid');
+        $page = $this->request()->getValue('page');
         if ($postId>0){
             $post = Post::getOne($postId);
             $post->addLike();
         }
-        $this->redirect('home');
+        $this->redirect('home', $page);
     }
     public function upload(){
         if (!\App\Auth::isLogged()) {

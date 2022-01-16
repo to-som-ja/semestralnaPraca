@@ -51,7 +51,6 @@
             e.preventDefault() ;
             returnToPreviousPage();
         }
-
         return confirmation ;
     }
 
